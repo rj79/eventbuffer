@@ -1,0 +1,23 @@
+{
+    "name": "eventbuffer",
+    "version": "0.1-dev",
+    "description": "Simple library for event signalling",
+    "keywords": "event, eventbuffer",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rj79/eventbuffer.git"
+    },
+    "authors": [
+        {
+            "name": "Robert Johansson",
+            "email": "robertrockar@live.com",
+            "url": "",
+            "maintainer": true
+        }
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "dependencies": {},
+    "frameworks": "*",
+    "platforms": "*"
+}
