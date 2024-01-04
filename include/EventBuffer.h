@@ -11,6 +11,7 @@ public:
     void emit(int32_t event);
     bool has_event() const;
     int32_t get();
+    void reset();
 
 private:
     uint8_t Count;

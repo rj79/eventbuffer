@@ -67,4 +67,11 @@ int32_t EventBuffer::get()
     }
 }
 
+void EventBuffer::reset()
+{
+    Count = 0;
+    ReadPos = 0;
+    WritePos = 0;
+}
+
 EventBuffer Events(32);
