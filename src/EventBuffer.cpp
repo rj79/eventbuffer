@@ -5,7 +5,9 @@
 EventBuffer::EventBuffer(uint8_t size) :
     Count(0),
     ReadPos(0),
-    WritePos(0)
+    WritePos(0),
+    Overflow(false),
+    Underflow(false)
 {
     Size = std::min((int)size, 32);
     Events = new int32_t[Size];
@@ -26,7 +28,7 @@ bool EventBuffer::is_full() const
     return Count == Size;
 }
 
-void EventBuffer::emit(int32_t event)
+bool EventBuffer::emit(int32_t event)
 {
     if (!is_full()) {
         Events[WritePos] = event;
@@ -35,11 +37,11 @@ void EventBuffer::emit(int32_t event)
             WritePos = 0;
         }
         ++Count;
+        return true;
     } 
     else {
-        /*char buffer[64];
-        snprintf(buffer, sizeof(buffer), "Warning: Event buffer full. Could not store %d.", event);
-        Serial.println(buffer);*/
+        Overflow = true;
+        return false;
     }
 }
 
@@ -60,9 +62,7 @@ int32_t EventBuffer::get()
         return result;
     }
     else {
-        /*char buffer[64];
-        snprintf(buffer, sizeof(buffer), "Warning: get() called when event buffer empty.");
-        Serial.println(buffer);*/
+        Underflow = true;
         return __INT32_MAX__;
     }
 }
@@ -72,6 +72,18 @@ void EventBuffer::reset()
     Count = 0;
     ReadPos = 0;
     WritePos = 0;
+    Overflow = false;
+    Underflow = false;
+}
+
+bool EventBuffer::underflow() const
+{
+    return Underflow;
+}
+
+bool EventBuffer::overflow() const
+{
+    return Overflow;
 }
 
 EventBuffer Events(32);
