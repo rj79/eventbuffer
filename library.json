@@ -1,8 +1,8 @@
 {
     "name": "eventbuffer",
     "version": "0.1-dev",
-    "description": "Simple library for event signalling",
-    "keywords": "event, eventbuffer",
+    "description": "Simple library for event signalling.",
+    "keywords": "event, eventbuffer, task cooperation",
     "repository": {
         "type": "git",
         "url": "https://github.com/rj79/eventbuffer.git"
