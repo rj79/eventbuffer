@@ -1,6 +1,6 @@
 #include "EventBuffer.h"
-#include "Arduino.h"
-#include <stdint.h>
+
+#define MIN(x, y) (x < y ? x : y)
 
 EventBuffer::EventBuffer(uint8_t size) :
     Count(0),
@@ -9,7 +9,7 @@ EventBuffer::EventBuffer(uint8_t size) :
     Overflow(false),
     Underflow(false)
 {
-    Size = std::min((int)size, 32);
+    Size = MIN((int)size, 32);
     Events = new int32_t[Size];
 }
 
