@@ -6,13 +6,13 @@
  * scenarios where it is desirable to have a loose coupling between the sender
  * and receiver task.
  */
-#include <Arduino>
+#include <Arduino.h>
 #include "EventBuffer.h"
 
 #define BUTTON_PIN 2
 
-const int32_t EVENT_BUTTON_PRESSED 1;
-const int32_t EVENT_BUTTON_RELEASED 2;
+const int32_t EVENT_BUTTON_PRESSED = 1;
+const int32_t EVENT_BUTTON_RELEASED = 2;
 
 class SenderTask
 {
@@ -74,7 +74,7 @@ ReceiverTask task2;
 
 void setup()
 {
-    task1.setup()
+    task1.setup();
 }
 
 void loop()
