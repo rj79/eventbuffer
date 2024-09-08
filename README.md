@@ -9,4 +9,4 @@ An "event" in this context is simply a 32 bit integer. The meaning of the
 event is application defined.
 
 # Usage
-See the example Arduino sketch in the example folder.
+See the example Arduino sketch in the examples folder.
