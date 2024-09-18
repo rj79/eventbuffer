@@ -6,6 +6,7 @@ EventBuffer::EventBuffer(uint8_t size) :
     Count(0),
     ReadPos(0),
     WritePos(0),
+    Events(nullptr),
     Overflow(false),
     Underflow(false)
 {
