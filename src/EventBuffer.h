@@ -31,10 +31,18 @@ public:
     bool has_event() const;
 
     /**
+     * Returns the first event event without consuming it.
+     * If peek() is called when the EventBuffer is empty, the returned event 
+     * will be equal to __INT32_MAX__.
+     * @return The first event.
+     */
+    int32_t peek() const;
+
+    /**
      * Returns the first event in the queue.
      * If get() is called when the EventBuffer is empty, the returned event will
      * be equal to __INT32_MAX__ and the underflow flag will be set.
-     * @return The event.
+     * @return The first event.
      */
     int32_t get();
 

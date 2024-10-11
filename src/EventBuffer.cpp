@@ -51,6 +51,16 @@ bool EventBuffer::has_event() const
     return Count > 0;
 }
 
+int32_t EventBuffer::peek() const
+{
+    if (!is_empty()) {
+        return Events[ReadPos];
+    }
+    else {
+        return __INT32_MAX__;
+    }
+}
+
 int32_t EventBuffer::get()
 {
     if (!is_empty()) {

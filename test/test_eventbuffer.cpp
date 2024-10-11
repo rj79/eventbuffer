@@ -29,6 +29,23 @@ void test_two_events()
   TEST_ASSERT_FALSE(eb.has_event());
 }
 
+void test_peek()
+{
+  EventBuffer eb(10);
+  eb.emit(42);
+  eb.emit(99);
+  TEST_ASSERT_EQUAL(42, eb.peek());
+  TEST_ASSERT_EQUAL(42, eb.peek());  
+  TEST_ASSERT_TRUE(eb.has_event());
+  eb.get();
+  TEST_ASSERT_EQUAL(99, eb.peek());
+  TEST_ASSERT_EQUAL(99, eb.peek());
+  TEST_ASSERT_TRUE(eb.has_event());  
+  eb.get();
+  TEST_ASSERT_EQUAL(__INT32_MAX__, eb.peek());
+  TEST_ASSERT_FALSE(eb.has_event());
+}
+
 void test_reset()
 {
   EventBuffer eb(10);
@@ -112,6 +129,7 @@ int runUnityTests(void)
   RUN_TEST(test_empty_buffer);
   RUN_TEST(test_one_event);
   RUN_TEST(test_two_events);
+  RUN_TEST(test_peek);
   RUN_TEST(test_reset);
   RUN_TEST(test_wraparound);
   RUN_TEST(test_get_when_empty);
